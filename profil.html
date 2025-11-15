@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naizo Library - Profil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* === LOGIN MODAL STYLE === */
+        .modal-content {
+            background: #ffffffcc;
+            /* putih transparan */
+            backdrop-filter: blur(10px);
+            /* efek kaca */
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-content:hover {
+            transform: scale(1.01);
+        }
+
+        .modal-title {
+            color: #1b1b1b;
+        }
+
+        .btn-dark {
+            background-color: #1B7F97 !important;
+            border: none;
+        }
+
+        .btn-dark:hover {
+            background-color: #145b6d !important;
+        }
+
+        /* =============================
+           PROFIL
+           ============================= */
+        #profil h3,
+        #profil h4 {
+            color: #172a4e;
+        }
+
+        #profil p,
+        #profil ol li {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        #profil img {
+            max-height: 300px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2rem;
+            }
+
+            #profil p,
+            #profil ol li {
+                font-size: 0.9rem;
+            }
+
+            #profil img {
+                max-height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center fw-bold" href="#">
+                <img src="image/logo.png" alt="logo.png" width="40" class="me-2 rounded">
+                Naizo Library
+                <i data-feather="anchor" class="ms-2" style="width:18px; height:18px;"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="katalog.html">Katalog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="layanan.html">Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profil.html">Profil</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        My Account
+                    </button>
+                    <form id="navSearchForm" action="katalog.html" method="get" class="d-flex">
+                        <input type="text" name="query" id="navSearchInput" class="form-control form-control-sm"
+                            placeholder="Cari buku di katalog...">
+                        <button type="submit" class="btn btn-outline-light btn-sm ms-2">Cari</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- My Account Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-4 shadow-lg border-0 rounded-4">
+                <div class="modal-header border-0 position-relative">
+                    <h5 class="modal-title fw-bold text-dark mx-auto" id="loginModalLabel">Login ke Naizo Library</h5>
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"
+                        aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-muted mb-4">Masuk dengan akun kamu untuk melanjutkan</p>
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control border border-dark rounded-3" id="username"
+                                placeholder="Username" required>
+                        </div>
+                        <div class="mb-3 position-relative">
+                            <input type="password" class="form-control border border-dark rounded-3" id="password"
+                                placeholder="Password" required>
+                            <span id="togglePassword" class="position-absolute top-50 end-0 translate-middle-y me-3"
+                                style="cursor: pointer;">
+                                <i data-feather="eye"></i>
+                            </span>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100 fw-semibold rounded-3">Masuk</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROFIL -->
+    <section id="profil" class="py-5">
+        <div class="container">
+            <h3 class="text-center mb-4">Tentang Naizo Library</h3>
+            <p class="text-muted text-center w-75 mx-auto">
+                Naizo Library merupakan perpustakaan digital modern yang mendukung kegiatan akademik dan literasi
+                digital.
+            </p>
+            <hr class="my-5">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h4>Visi</h4>
+                    <p>Menjadi perpustakaan unggul berbasis teknologi informasi.</p>
+                    <h4 class="mt-4">Misi</h4>
+                    <ol>
+                        <li>Menyediakan akses informasi yang cepat dan relevan.</li>
+                        <li>Meningkatkan kualitas layanan berbasis teknologi.</li>
+                    </ol>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="image/profil-lib.png" alt="profil" class="img-fluid rounded shadow-sm">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <div class="mb-4 mb-md-0">
+                    <div class="d-flex align-items-center mb-2">
+                        <i data-feather="anchor" class="text-danger me-2" style="width:22px; height:22px;"></i>
+                        <span class="fw-bold fs-5">Naizo Library</span>
+                    </div>
+                    <p class="text-secondary mb-0">Jl. Nakula Sadewa No. 2, Salatiga - (0298) 123456 - Email:
+                        library@uin-salatiga.ac.id
+                    </p>
+                    <p class="text-secondary mb-0">© Hak Cipta 2022 - Perpustakaan Universitas Islam Negeri Salatiga
+                    </p>
+                </div>
+                <div class="d-flex gap-4">
+                    <a href="#" class="text-white-50 hover-text-danger"><i data-feather="twitter"></i></a>
+                    <a href="#" class="text-white-50 hover-text-danger"><i data-feather="instagram"></i></a>
+                    <a href="#" class="text-white-50 hover-text-danger"><i data-feather="github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+
+</html>
