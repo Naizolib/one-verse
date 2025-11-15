@@ -227,6 +227,8 @@ nav ul li a.active {
   transition: transform 0.3s ease;
   margin: 10px;
   vertical-align: middle;
+  left: 20px;
+  top: 900px;
 }
 
 /* efek lucu pas hover */
@@ -441,3 +443,4 @@ nav ul li a.active {
 .announcement-item a:hover h3 {
   text-decoration: underline;
 }
+
