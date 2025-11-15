@@ -45,19 +45,14 @@
         .banner {
             position: relative;
             text-align: center;
-            height: 100vh;
+            height: auto;
             overflow: hidden;
         }
 
         .banner img {
-            position: absolute;
-            top: 30%;
-            left: 50%;
             width: 100%;
-            height: 60%;
+            height: 350px;
             object-fit: cover;
-            transform: translate(-50%, -50%);
-            z-index: 0;
         }
 
         .banner-text {
@@ -71,57 +66,12 @@
         }
 
         /* =============================
-           KATALOG
+           LAYANAN
            ============================= */
-        #katalog {
+        #layanan {
             margin-top: -150px;
         }
 
-        .card {
-            border: none;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            background: #ffffff;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-img-top {
-            height: 180px;
-            object-fit: cover;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .card-img-top:hover {
-            transform: scale(1.08) rotate(-1deg);
-            filter: brightness(1.1);
-            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.4);
-        }
-
-        .card-title {
-            font-weight: 700;
-            color: #222;
-        }
-
-        .card-text {
-            font-size: 0.95rem;
-            color: #666;
-        }
-
-        h2.text-center {
-            color: #1e40af;
-            letter-spacing: 0.5px;
-        }
-
-        /* =============================
-           LAYANAN
-           ============================= */
         .service-card .card {
             border-radius: 15px;
             overflow: hidden;
@@ -153,17 +103,17 @@
             font-size: 0.95rem;
         }
 
+        .card-img-top {
+            height: 200px;
+        }
+
         @media (max-width: 768px) {
             .card-img-top {
-                height: 160px;
+                height: 200px;
             }
 
             h2.text-center {
                 font-size: 1.5rem;
-            }
-
-            #katalog {
-                margin-top: -50px;
             }
 
             .banner-text {
@@ -277,185 +227,166 @@
         </div>
     </section>
 
-    <!-- Layanan (tetap sama) -->
+    <!-- LAYANAN -->
     <section id="layanan" class="container my-5">
-        <!-- LAYANAN -->
-        <section id="layanan" class="container my-5">
-            <h2 class="text-center fw-bold mb-5">Layanan Perpustakaan</h2>
+        <h2 class="text-center fw-bold mb-5">Layanan Perpustakaan</h2>
 
-            <div class="row g-4" id="servicesGrid">
+        <div class="row g-4" id="servicesGrid">
 
-                <!-- Card: Peminjaman -->
-                <div class="col-sm-6 col-md-4 service-card" data-title="Peminjaman Buku"
-                    data-tags="peminjaman,buku,layanan">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex align-items-center gap-3 mb-3">
-                                <div class="service-icon">
-                                    <i class="bi bi-book"></i>
-                                </div>
-                                <div>
-                                    <h5 class="card-title mb-0">Peminjaman Buku</h5>
-                                    <small class="text-muted">Pinjam koleksi cetak ke anggota terdaftar</small>
-                                </div>
+            <!-- Card: Peminjaman -->
+            <div class="col-sm-6 col-md-4 service-card" data-title="Peminjaman Buku"
+                data-tags="peminjaman,buku,layanan">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="service-icon">
+                                <i class="bi bi-book"></i>
                             </div>
-                            <p class="card-text text-muted">Syarat: Kartu anggota, batas peminjaman 2 minggu, bisa
-                                diperpanjang secara
-                                online jika tersedia.</p>
-                            <div class="mt-auto d-grid">
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#detailModal" data-title="Peminjaman Buku"
-                                    data-desc="Pinjam koleksi cetak hingga 2 minggu. Perpanjangan lewat akun online.">Detail</button>
+                            <div>
+                                <h5 class="card-title mb-0">Peminjaman Buku</h5>
+                                <small class="text-muted">Pinjam koleksi cetak ke anggota terdaftar</small>
                             </div>
+                        </div>
+                        <p class="card-text text-muted">Syarat: Kartu anggota, batas peminjaman 2 minggu, bisa
+                            diperpanjang secara
+                            online jika tersedia.</p>
+                        <div class="mt-auto d-grid">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal"
+                                data-title="Peminjaman Buku"
+                                data-desc="Pinjam koleksi cetak hingga 2 minggu. Perpanjangan lewat akun online.">Detail</button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Card: Ruang Baca -->
-                <div class="col-sm-6 col-md-4 service-card" data-title="Ruang Baca & Diskusi"
-                    data-tags="ruang,ruang baca,diskusi">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex align-items-center gap-3 mb-3">
-                                <div class="service-icon"><i class="bi bi-people"></i></div>
-                                <div>
-                                    <h5 class="card-title mb-0">Ruang Baca & Diskusi</h5>
-                                    <small class="text-muted">Ruang untuk belajar kelompok dan seminar kecil</small>
-                                </div>
-                            </div>
-                            <p class="card-text text-muted">Reservasi ruang bisa dilakukan via form online atau datang
-                                langsung ke
-                                layanan informasi.</p>
-                            <div class="mt-auto d-grid">
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#detailModal" data-title="Ruang Baca & Diskusi"
-                                    data-desc="Reservasi ruang via form online.">Detail</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card: E-Resources -->
-                <div class="col-sm-6 col-md-4 service-card" data-title="E-Resources"
-                    data-tags="ebook,journal,e-resources">
-                    <div class="card h-100 shadow-sm">
-                        <img src="image/ebook-banner.jpg" class="card-img-top" alt="E-Resources">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Akses E-Resources</h5>
-                            <p class="card-text text-muted">Akses e-book, jurnal, dan database akademik menggunakan akun
-                                institusi.</p>
-                            <div class="mt-auto d-grid">
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#detailModal" data-title="E-Resources"
-                                    data-desc="Akses e-book dan jurnal melalui portal perpustakaan.">Detail</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card: Layanan Referensi -->
-                <div class="col-sm-6 col-md-4 service-card" data-title="Layanan Referensi"
-                    data-tags="referensi,bantuan,penelitian">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex align-items-center gap-3 mb-3">
-                                <div class="service-icon"><i class="bi bi-question-circle"></i></div>
-                                <div>
-                                    <h5 class="card-title mb-0">Layanan Referensi</h5>
-                                    <small class="text-muted">Bantuan penelusuran sumber & sitasi</small>
-                                </div>
-                            </div>
-                            <p class="card-text text-muted">Petugas referensi siap membantu pencarian literatur dan tata
-                                sitasi sesuai
-                                standar akademik.</p>
-                            <div class="mt-auto d-grid">
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#detailModal" data-title="Layanan Referensi"
-                                    data-desc="Bantuan pencarian sumber & sitasi">Detail</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card: Pelatihan Literasi -->
-                <div class="col-sm-6 col-md-4 service-card" data-title="Pelatihan Literasi"
-                    data-tags="pelatihan,workshop,literasi">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex align-items-center gap-3 mb-3">
-                                <div class="service-icon"><i class="bi bi-mortarboard"></i></div>
-                                <div>
-                                    <h5 class="card-title mb-0">Pelatihan Literasi</h5>
-                                    <small class="text-muted">Workshop penelusuran, manajemen referensi, &
-                                        plagiarisme</small>
-                                </div>
-                            </div>
-                            <p class="card-text text-muted">Jadwal rutin tiap semester: pendaftaran via web atau
-                                langsung ke layanan.
-                            </p>
-                            <div class="mt-auto d-grid">
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#detailModal" data-title="Pelatihan Literasi"
-                                    data-desc="Workshop penelusuran & manajemen referensi">Detail</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div> <!-- end .row -->
-
-            <!-- Jika tidak ditemukan -->
-            <div id="noService" class="text-center text-muted mt-4" style="display:none">
-                Tidak ada layanan yang sesuai.
             </div>
 
-            <!-- kontak singkat -->
-            <div class="row mt-5">
-                <div class="col-md-6">
-                    <h5>Kontak Layanan</h5>
-                    <p class="text-muted mb-1">Butuh bantuan lebih lanjut? Hubungi petugas layanan perpustakaan:</p>
-                    <p class="mb-0"><strong>Tel:</strong> (0298) 123456</p>
-                    <p><strong>Email:</strong> <a
-                            href="mailto:library@uin-salatiga.ac.id">library@uin-salatiga.ac.id</a></p>
-                </div>
-                <div class="col-md-6">
-                    <h5>Form Reservasi / Pertanyaan</h5>
-                    <form id="contactForm" class="row g-2">
-                        <div class="col-12">
-                            <input type="text" class="form-control form-control-sm" placeholder="Nama" required>
+            <!-- Card: Ruang Baca -->
+            <div class="col-sm-6 col-md-4 service-card" data-title="Ruang Baca & Diskusi"
+                data-tags="ruang,ruang baca,diskusi">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="service-icon"><i class="bi bi-people"></i></div>
+                            <div>
+                                <h5 class="card-title mb-0">Ruang Baca & Diskusi</h5>
+                                <small class="text-muted">Ruang untuk belajar kelompok dan seminar kecil</small>
+                            </div>
                         </div>
-                        <div class="col-12">
-                            <input type="email" class="form-control form-control-sm" placeholder="Email" required>
+                        <p class="card-text text-muted">Reservasi ruang bisa dilakukan via form online atau datang
+                            langsung ke
+                            layanan informasi.</p>
+                        <div class="mt-auto d-grid">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal"
+                                data-title="Ruang Baca & Diskusi"
+                                data-desc="Reservasi ruang via form online.">Detail</button>
                         </div>
-                        <div class="col-12">
-                            <textarea class="form-control form-control-sm" rows="2"
-                                placeholder="Pesan / Permintaan reservasi" required></textarea>
-                        </div>
-                        <div class="col-12 text-end">
-                            <button class="btn btn-primary btn-sm" type="submit">Kirim</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Modal detail layanan -->
-        <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="detailModalTitle">Detail Layanan</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body" id="detailModalBody">Deskripsi layanan...</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
-                        <a href="#" class="btn btn-primary btn-sm">Ajukan Permintaan</a>
+            <!-- Card: E-Resources -->
+            <div class="col-sm-6 col-md-4 service-card" data-title="E-Resources" data-tags="ebook,journal,e-resources">
+                <div class="card h-100 shadow-sm">
+                    <img src="image/ebook-banner.jpg" class="card-img-top" alt="E-Resources">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Akses E-Resources</h5>
+                        <p class="card-text text-muted">Akses e-book, jurnal, dan database akademik menggunakan akun
+                            institusi.</p>
+                        <div class="mt-auto d-grid">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal"
+                                data-title="E-Resources"
+                                data-desc="Akses e-book dan jurnal melalui portal perpustakaan.">Detail</button>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Card: Layanan Referensi -->
+            <div class="col-sm-6 col-md-4 service-card" data-title="Layanan Referensi"
+                data-tags="referensi,bantuan,penelitian">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="service-icon"><i class="bi bi-question-circle"></i></div>
+                            <div>
+                                <h5 class="card-title mb-0">Layanan Referensi</h5>
+                                <small class="text-muted">Bantuan penelusuran sumber & sitasi</small>
+                            </div>
+                        </div>
+                        <p class="card-text text-muted">Petugas referensi siap membantu pencarian literatur dan tata
+                            sitasi sesuai
+                            standar akademik.</p>
+                        <div class="mt-auto d-grid">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal"
+                                data-title="Layanan Referensi"
+                                data-desc="Bantuan pencarian sumber & sitasi">Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: Pelatihan Literasi -->
+            <div class="col-sm-6 col-md-4 service-card" data-title="Pelatihan Literasi"
+                data-tags="pelatihan,workshop,literasi">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="service-icon"><i class="bi bi-mortarboard"></i></div>
+                            <div>
+                                <h5 class="card-title mb-0">Pelatihan Literasi</h5>
+                                <small class="text-muted">Workshop penelusuran, manajemen referensi, &
+                                    plagiarisme</small>
+                            </div>
+                        </div>
+                        <p class="card-text text-muted">Jadwal rutin tiap semester: pendaftaran via web atau
+                            langsung ke layanan.
+                        </p>
+                        <div class="mt-auto d-grid">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal"
+                                data-title="Pelatihan Literasi"
+                                data-desc="Workshop penelusuran & manajemen referensi">Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- end .row -->
+
+        <!-- Jika tidak ditemukan -->
+        <div id="noService" class="text-center text-muted mt-4" style="display:none">
+            Tidak ada layanan yang sesuai.
+        </div>
+
+        <!-- kontak singkat -->
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h5>Kontak Layanan</h5>
+                <p class="text-muted mb-1">Butuh bantuan lebih lanjut? Hubungi petugas layanan perpustakaan:</p>
+                <p class="mb-0"><strong>Tel:</strong> (0298) 123456</p>
+                <p><strong>Email:</strong> <a href="mailto:library@uin-salatiga.ac.id">library@uin-salatiga.ac.id</a>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h5>Form Reservasi / Pertanyaan</h5>
+                <form id="contactForm" class="row g-2">
+                    <div class="col-12">
+                        <input type="text" class="form-control form-control-sm" placeholder="Nama" required>
+                    </div>
+                    <div class="col-12">
+                        <input type="email" class="form-control form-control-sm" placeholder="Email" required>
+                    </div>
+                    <div class="col-12">
+                        <textarea class="form-control form-control-sm" rows="2"
+                            placeholder="Pesan / Permintaan reservasi" required></textarea>
+                    </div>
+                    <div class="col-12 text-end">
+                        <button class="btn btn-primary btn-sm" type="submit">Kirim</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
+
+
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-5 mt-5">
