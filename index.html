@@ -234,21 +234,38 @@
       feather.replace();
     });
   </script>
-  <script>
+<script>
 const stiker = document.getElementById("stikerNailong");
 
 let isDragging = false;
+let moved = false;
+let targetX = 0;
+let targetY = 0;
+let currentX = 0;
+let currentY = 0;
 let offsetX = 0;
 let offsetY = 0;
-let moved = false; // BIAR BEDAIN klik atau drag
 
-// ==== EVENT DRAG ====
-stiker.addEventListener("mousedown", startDrag);
-stiker.addEventListener("touchstart", startDrag);
+// ===== ANIMASI SMOOTH =====
+function animate() {
+  if (!isDragging) return requestAnimationFrame(animate);
 
+  // interpolasi biar smooth (0.2 = halus)
+  currentX += (targetX - currentX) * 0.2;
+  currentY += (targetY - currentY) * 0.2;
+
+  stiker.style.left = currentX + "px";
+  stiker.style.top = currentY + "px";
+
+  requestAnimationFrame(animate);
+}
+
+requestAnimationFrame(animate);
+
+// ===== START DRAG =====
 function startDrag(e) {
   isDragging = true;
-  moved = false; // reset
+  moved = false;
 
   let pos = e.touches ? e.touches[0] : e;
 
@@ -256,26 +273,35 @@ function startDrag(e) {
   offsetY = pos.clientY - stiker.offsetTop;
 
   document.addEventListener("mousemove", drag);
-  document.addEventListener("touchmove", drag);
+  document.addEventListener("touchmove", drag, { passive: false });
   document.addEventListener("mouseup", stopDrag);
   document.addEventListener("touchend", stopDrag);
 
   stiker.style.transition = "none";
 }
 
+stiker.addEventListener("mousedown", startDrag);
+stiker.addEventListener("touchstart", startDrag);
+
+// ===== DRAG MOVE =====
 function drag(e) {
   if (!isDragging) return;
 
-  moved = true; // artinya sedang digeser
+  moved = true;
 
   let pos = e.touches ? e.touches[0] : e;
 
-  stiker.style.left = (pos.clientX - offsetX) + "px";
-  stiker.style.top = (pos.clientY - offsetY) + "px";
+  targetX = pos.clientX - offsetX;
+  targetY = pos.clientY - offsetY;
+
+  // cegah scroll saat drag di HP
+  e.preventDefault();
 }
 
+// ===== STOP DRAG =====
 function stopDrag() {
   isDragging = false;
+
   stiker.style.transition = "transform 0.3s ease";
 
   document.removeEventListener("mousemove", drag);
@@ -284,15 +310,12 @@ function stopDrag() {
   document.removeEventListener("touchend", stopDrag);
 }
 
-// ==== KLIK GOYANG TANPA GANGGU DRAG ====
+// ===== KLIK GOYANG =====
 stiker.addEventListener("click", function () {
-  if (moved) return; // kalau barusan digeser, jangan goyang
+  if (moved) return; // barusan drag? jangan goyang
 
   stiker.classList.add("goyang");
-
-  setTimeout(() => {
-    stiker.classList.remove("goyang");
-  }, 500);
+  setTimeout(() => stiker.classList.remove("goyang"), 500);
 });
 </script>
   <script src="news.js"></script>
