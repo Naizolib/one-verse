@@ -220,104 +220,93 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/feather-icons"></script>
   <script>
-    feather.replace();
+    const stiker = document.getElementById("stikerNailong");
 
-    const togglePassword = document.querySelector('#togglePassword');
-    const passwordInput = document.querySelector('#password');
+    let isDragging = false;
+    let moved = false;
 
-    togglePassword.addEventListener('click', () => {
-      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-      passwordInput.setAttribute('type', type);
-      togglePassword.innerHTML = type === 'password'
-        ? '<i data-feather="eye"></i>'
-        : '<i data-feather="eye-off"></i>';
-      feather.replace();
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    let offsetX = 0;
+    let offsetY = 0;
+
+    // ===== SYNC POSISI AWAL CSS → JS =====
+    currentX = stiker.offsetLeft;
+    currentY = stiker.offsetTop;
+    targetX = currentX;
+    targetY = currentY;
+
+    // ===== ANIMASI SUPER SMOOTH =====
+    function animate() {
+      // smoothing (0.35 = ultra smooth; makin besar makin responsif)
+      const speed = 0.35;
+
+      currentX += (targetX - currentX) * speed;
+      currentY += (targetY - currentY) * speed;
+
+      stiker.style.left = currentX + "px";
+      stiker.style.top = currentY + "px";
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // ===== START DRAG =====
+    function startDrag(e) {
+      isDragging = true;
+      moved = false;
+
+      let pos = e.touches ? e.touches[0] : e;
+
+      offsetX = pos.clientX - targetX;
+      offsetY = pos.clientY - targetY;
+
+      document.addEventListener("mousemove", drag);
+      document.addEventListener("touchmove", drag, { passive: false });
+      document.addEventListener("mouseup", stopDrag);
+      document.addEventListener("touchend", stopDrag);
+
+      stiker.style.transition = "none";
+    }
+
+    stiker.addEventListener("mousedown", startDrag);
+    stiker.addEventListener("touchstart", startDrag);
+
+    // ===== DRAG =====
+    function drag(e) {
+      if (!isDragging) return;
+      moved = true;
+
+      let pos = e.touches ? e.touches[0] : e;
+
+      targetX = pos.clientX - offsetX;
+      targetY = pos.clientY - offsetY;
+
+      e.preventDefault(); // stop scroll saat drag
+    }
+
+    // ===== STOP DRAG =====
+    function stopDrag() {
+      isDragging = false;
+
+      document.removeEventListener("mousemove", drag);
+      document.removeEventListener("touchmove", drag);
+      document.removeEventListener("mouseup", stopDrag);
+      document.removeEventListener("touchend", stopDrag);
+    }
+
+    // ===== KLIK GOYANG =====
+    stiker.addEventListener("click", () => {
+      if (moved) return;
+
+      stiker.classList.add("goyang");
+      setTimeout(() => stiker.classList.remove("goyang"), 500);
     });
   </script>
-<script>
-const stiker = document.getElementById("stikerNailong");
-
-let isDragging = false;
-let moved = false;
-let targetX = 0;
-let targetY = 0;
-let currentX = 0;
-let currentY = 0;
-let offsetX = 0;
-let offsetY = 0;
-
-// ===== ANIMASI SMOOTH =====
-function animate() {
-  if (!isDragging) return requestAnimationFrame(animate);
-
-  // interpolasi biar smooth (0.2 = halus)
-  currentX += (targetX - currentX) * 0.2;
-  currentY += (targetY - currentY) * 0.2;
-
-  stiker.style.left = currentX + "px";
-  stiker.style.top = currentY + "px";
-
-  requestAnimationFrame(animate);
-}
-
-requestAnimationFrame(animate);
-
-// ===== START DRAG =====
-function startDrag(e) {
-  isDragging = true;
-  moved = false;
-
-  let pos = e.touches ? e.touches[0] : e;
-
-  offsetX = pos.clientX - stiker.offsetLeft;
-  offsetY = pos.clientY - stiker.offsetTop;
-
-  document.addEventListener("mousemove", drag);
-  document.addEventListener("touchmove", drag, { passive: false });
-  document.addEventListener("mouseup", stopDrag);
-  document.addEventListener("touchend", stopDrag);
-
-  stiker.style.transition = "none";
-}
-
-stiker.addEventListener("mousedown", startDrag);
-stiker.addEventListener("touchstart", startDrag);
-
-// ===== DRAG MOVE =====
-function drag(e) {
-  if (!isDragging) return;
-
-  moved = true;
-
-  let pos = e.touches ? e.touches[0] : e;
-
-  targetX = pos.clientX - offsetX;
-  targetY = pos.clientY - offsetY;
-
-  // cegah scroll saat drag di HP
-  e.preventDefault();
-}
-
-// ===== STOP DRAG =====
-function stopDrag() {
-  isDragging = false;
-
-  stiker.style.transition = "transform 0.3s ease";
-
-  document.removeEventListener("mousemove", drag);
-  document.removeEventListener("touchmove", drag);
-  document.removeEventListener("mouseup", stopDrag);
-  document.removeEventListener("touchend", stopDrag);
-}
-
-// ===== KLIK GOYANG =====
-stiker.addEventListener("click", function () {
-  if (moved) return; // barusan drag? jangan goyang
-
-  stiker.classList.add("goyang");
-  setTimeout(() => stiker.classList.remove("goyang"), 500);
-});
-</script>
   <script src="news.js"></script>
 </body>
 
