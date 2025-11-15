@@ -166,11 +166,14 @@
       <div class="col-md-6">
         <div class="video-glass p-3 rounded-4">
           <div class="video-inner">
-          <iframe width="180%" height="208" src="https://www.youtube.com/embed/SSSqKroaSRQ" title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen class="rounded-4 w-100">
-          </iframe>
+            <iframe width="180%" height="208" src="https://www.youtube.com/embed/SSSqKroaSRQ"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen class="rounded-4 w-100">
+            </iframe>
+            <!-- Stiker nempel ke video -->
+            <img src="https://i.pinimg.com/1200x/c6/21/36/c621369469e55393764bac568bbd78ff.jpg"
+              alt="Stiker Nailongg Lucu" class="stiker-nailongg" id="stikerNailong">
           </div>
         </div>
       </div>
@@ -232,14 +235,67 @@
     });
   </script>
   <script>
-    const nailongg = document.querySelector('.stiker-nailongg');
-    nailongg.addEventListener('click', () => {
-      nailongg.classList.add('goyang');
-      setTimeout(() => {
-        nailongg.classList.remove('goyang');
-      }, 500); // durasi sama kayak animasi di CSS (0.5 detik)
-    });
-  </script>
+const stiker = document.getElementById("stikerNailong");
+
+let isDragging = false;
+let offsetX = 0;
+let offsetY = 0;
+let moved = false; // BIAR BEDAIN klik atau drag
+
+// ==== EVENT DRAG ====
+stiker.addEventListener("mousedown", startDrag);
+stiker.addEventListener("touchstart", startDrag);
+
+function startDrag(e) {
+  isDragging = true;
+  moved = false; // reset
+
+  let pos = e.touches ? e.touches[0] : e;
+
+  offsetX = pos.clientX - stiker.offsetLeft;
+  offsetY = pos.clientY - stiker.offsetTop;
+
+  document.addEventListener("mousemove", drag);
+  document.addEventListener("touchmove", drag);
+  document.addEventListener("mouseup", stopDrag);
+  document.addEventListener("touchend", stopDrag);
+
+  stiker.style.transition = "none";
+}
+
+function drag(e) {
+  if (!isDragging) return;
+
+  moved = true; // artinya sedang digeser
+
+  let pos = e.touches ? e.touches[0] : e;
+
+  stiker.style.left = (pos.clientX - offsetX) + "px";
+  stiker.style.top = (pos.clientY - offsetY) + "px";
+}
+
+function stopDrag() {
+  isDragging = false;
+  stiker.style.transition = "transform 0.3s ease";
+
+  document.removeEventListener("mousemove", drag);
+  document.removeEventListener("touchmove", drag);
+  document.removeEventListener("mouseup", stopDrag);
+  document.removeEventListener("touchend", stopDrag);
+}
+
+// ==== KLIK GOYANG TANPA GANGGU DRAG ====
+stiker.addEventListener("click", function () {
+  if (moved) return; // kalau barusan digeser, jangan goyang
+
+  stiker.classList.add("goyang");
+
+  setTimeout(() => {
+    stiker.classList.remove("goyang");
+  }, 500);
+});
+</script>
   <script src="news.js"></script>
 </body>
+
 </html>
