@@ -104,7 +104,7 @@
         }
 
         .card-img-top {
-            height: 200px;
+            height: 190px;
         }
 
         @media (max-width: 768px) {
@@ -239,17 +239,16 @@
                 <div class="card h-100 shadow-sm">
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex align-items-center gap-3 mb-3">
-                            <div class="service-icon">
-                                <i class="bi bi-book"></i>
-                            </div>
+                            <div class="service-icon"><i class="bi bi-book"></i></div>
                             <div>
                                 <h5 class="card-title mb-0">Peminjaman Buku</h5>
                                 <small class="text-muted">Pinjam koleksi cetak ke anggota terdaftar</small>
                             </div>
                         </div>
-                        <p class="card-text text-muted">Syarat: Kartu anggota, batas peminjaman 2 minggu, bisa
-                            diperpanjang secara
-                            online jika tersedia.</p>
+                        <p class="card-text text-muted">
+                            Syarat: Kartu anggota, batas peminjaman 2 minggu, bisa diperpanjang secara online jika
+                            tersedia.
+                        </p>
                         <div class="mt-auto d-grid">
                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal"
                                 data-title="Peminjaman Buku"
@@ -271,9 +270,9 @@
                                 <small class="text-muted">Ruang untuk belajar kelompok dan seminar kecil</small>
                             </div>
                         </div>
-                        <p class="card-text text-muted">Reservasi ruang bisa dilakukan via form online atau datang
-                            langsung ke
-                            layanan informasi.</p>
+                        <p class="card-text text-muted">
+                            Reservasi ruang bisa dilakukan via form online atau datang langsung ke layanan informasi.
+                        </p>
                         <div class="mt-auto d-grid">
                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal"
                                 data-title="Ruang Baca & Diskusi"
@@ -286,11 +285,17 @@
             <!-- Card: E-Resources -->
             <div class="col-sm-6 col-md-4 service-card" data-title="E-Resources" data-tags="ebook,journal,e-resources">
                 <div class="card h-100 shadow-sm">
-                    <img src="image/ebook-banner.jpg" class="card-img-top" alt="E-Resources">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Akses E-Resources</h5>
-                        <p class="card-text text-muted">Akses e-book, jurnal, dan database akademik menggunakan akun
-                            institusi.</p>
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="service-icon"><i class="bi bi-laptop"></i></div>
+                            <div>
+                                <h5 class="card-title mb-0">Akses E-Resources</h5>
+                                <small class="text-muted">E-book, jurnal, dan database akademik</small>
+                            </div>
+                        </div>
+                        <p class="card-text text-muted">
+                            Akses e-book, jurnal, dan database akademik menggunakan akun institusi.
+                        </p>
                         <div class="mt-auto d-grid">
                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal"
                                 data-title="E-Resources"
@@ -312,9 +317,9 @@
                                 <small class="text-muted">Bantuan penelusuran sumber & sitasi</small>
                             </div>
                         </div>
-                        <p class="card-text text-muted">Petugas referensi siap membantu pencarian literatur dan tata
-                            sitasi sesuai
-                            standar akademik.</p>
+                        <p class="card-text text-muted">
+                            Petugas referensi siap membantu pencarian literatur dan tata sitasi sesuai standar akademik.
+                        </p>
                         <div class="mt-auto d-grid">
                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal"
                                 data-title="Layanan Referensi"
@@ -333,12 +338,11 @@
                             <div class="service-icon"><i class="bi bi-mortarboard"></i></div>
                             <div>
                                 <h5 class="card-title mb-0">Pelatihan Literasi</h5>
-                                <small class="text-muted">Workshop penelusuran, manajemen referensi, &
-                                    plagiarisme</small>
+                                <small class="text-muted">Workshop literasi informasi</small>
                             </div>
                         </div>
-                        <p class="card-text text-muted">Jadwal rutin tiap semester: pendaftaran via web atau
-                            langsung ke layanan.
+                        <p class="card-text text-muted">
+                            Jadwal rutin tiap semester: pendaftaran via web atau langsung ke layanan.
                         </p>
                         <div class="mt-auto d-grid">
                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal"
@@ -348,6 +352,30 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Card Baru: Koleksi Digital -->
+            <div class="col-sm-6 col-md-4 service-card" data-title="Koleksi Digital" data-tags="digital,koleksi,online">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="service-icon"><i class="bi bi-cloud-download"></i></div>
+                            <div>
+                                <h5 class="card-title mb-0">Koleksi Digital</h5>
+                                <small class="text-muted">Unduh modul, skripsi, & dokumen digital</small>
+                            </div>
+                        </div>
+                        <p class="card-text text-muted">
+                            Koleksi digital kampus tersedia untuk diunduh menggunakan login institusi.
+                        </p>
+                        <div class="mt-auto d-grid">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal"
+                                data-title="Koleksi Digital"
+                                data-desc="Akses modul & dokumen digital kampus.">Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div> <!-- end .row -->
 
